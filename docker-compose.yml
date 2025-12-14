@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  subconverter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        THREADS: 4
+    image: metacubex/subconverter:latest
+    container_name: subconverter
+    ports:
+      - "25500:25500"
+    volumes:
+      - ./base:/base:ro
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:25500/version"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,15 @@
+.git
+.gitignore
+build/
+cmake-build-debug/
+bin/
+*.o
+*.a
+*.so
+*.exe
+*.log
+node_modules/
+venv/
+dist/
+/.vscode
+/.idea
