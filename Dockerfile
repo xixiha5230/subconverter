@@ -42,4 +42,5 @@ RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone ||
 
 WORKDIR /base
 EXPOSE 25500/tcp
-CMD ["subconverter"]
+# Point to the pref file inside /base so the server loads configuration and binds correctly
+CMD ["subconverter", "-f", "/base/pref.example.ini"]
